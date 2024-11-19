@@ -9,9 +9,12 @@
   --navbar-background-color: rgba(0, 0, 0, 1);
   --navbar-txt-color: #B4B4B4;
   --navbar-hover-txt-color: #FFFFFF;
-  --navbar-border-color: #FFFFFF;
+  --navbar-border-color: #B4B4B4;
+  --navbar-border-color-hover: #FFFFFF;
   --navbar-blur: 5px;
   --navbar-link-border-radius: 20px;
+  --navbar-link-width: 1px;
+  --navbar-link-hover-width: 3px;
   --navbar-link-letter-spacing: 2px;
 }
 
@@ -22,6 +25,7 @@
 
 body {
   background: var(--background-color);
+  overflow-x: hidden;
 }
 
 nav {
@@ -46,24 +50,37 @@ nav {
   align-items: center;
 }
 
-nav a{
+nav a {
   height: 100%;
-  padding: 0 20px;
+  padding: 0 10px;
+  max-height: 40px;
   display: flex;
   align-items: center;
   text-decoration: none;
   color: var(--navbar-txt-color);
-  transition: 0.6s;
-  border-color: var(--navbar-border-color);
-  border-width: 10px;
-
+  transition: border-width 0.3s, color 0.3s; /* Smooth transitions */
+  border: solid var(--navbar-border-color); /* Always have a border */
+  border-width: var(--navbar-link-width); /* Default thin border */
+  border-radius: var(--navbar-link-border-radius); /* Always rounded corners */
+  box-sizing: border-box; /* Ensures padding remains consistent */
+  margin-left: 5px;
 }
 
-nav a:hover{
-
+nav a:hover {
+  border-width: var(--navbar-link-hover-width); /* Thicker border on hover */
+  color: var(--navbar-hover-txt-color); /* Optional color change */
+  border-color: var(--navbar-border-color-hover);
 }
 
-nav .home-link{
+nav .home-link {
   margin-right: auto;
+  border: none; /* Completely removes the border */
+  transition: none; /* No hover effect */
 }
+
+nav .home-link:hover {
+  border: none; /* Ensures no border appears on hover */
+  color: var(--navbar-txt-color); /* Keeps the same text color */
+}
+
 
