@@ -1,0 +1,69 @@
+@font-face {
+  font-family: "Geologica";
+  src: url(fonts/Geologica-VariableFont_CRSV\,SHRP\,slnt\,wght.ttf);
+}
+
+:root {
+  --primary-text: "Geologica";
+  --background-color: #ffffff;
+  --navbar-background-color: rgba(0, 0, 0, 1);
+  --navbar-txt-color: #B4B4B4;
+  --navbar-hover-txt-color: #FFFFFF;
+  --navbar-border-color: #FFFFFF;
+  --navbar-blur: 5px;
+  --navbar-link-border-radius: 20px;
+  --navbar-link-letter-spacing: 2px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background-color);
+}
+
+nav {
+  height: 60px;
+  background-color: var(--navbar-background-color);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: var(--primary-text);
+  backdrop-filter: blur(var(--navbar-blur)); /* Glass blur effect */
+  -webkit-backdrop-filter: blur(var(--navbar-blur)); /* For Safari support */
+  border-bottom: 1px solid var(--navbar-border-color); /* Optional border for better definition */
+  padding: 0 20px; /* Add some horizontal padding */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional for a subtle shadow */
+}
+
+.links-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+nav a{
+  height: 100%;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--navbar-txt-color);
+  transition: 0.6s;
+  border-color: var(--navbar-border-color);
+  border-width: 10px;
+
+}
+
+nav a:hover{
+
+}
+
+nav .home-link{
+  margin-right: auto;
+}
+
