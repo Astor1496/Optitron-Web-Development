@@ -7,6 +7,7 @@
   --primary-text: "Geologica";
   --background-color: #ffffff;
   --navbar-background-color: rgba(0, 0, 0, 1);
+  --sidebar-background-color: rgba(0, 0, 0, 1);
   --navbar-txt-color: #B4B4B4;
   --navbar-hover-txt-color: #FFFFFF;
   --navbar-border-color: #B4B4B4;
@@ -23,9 +24,19 @@
   padding: 0;
 }
 
+html{
+  font-size: 12pt;
+  font-family: "Geologica";
+}
+
 body {
   background: var(--background-color);
   overflow-x: hidden;
+}
+
+.homeiconlogo {
+  width: 100px;
+  height: 100px;
 }
 
 nav {
@@ -34,12 +45,8 @@ nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-family: var(--primary-text);
-  backdrop-filter: blur(var(--navbar-blur)); /* Glass blur effect */
-  -webkit-backdrop-filter: blur(var(--navbar-blur)); /* For Safari support */
-  border-bottom: 1px solid var(--navbar-border-color); /* Optional border for better definition */
-  padding: 0 20px; /* Add some horizontal padding */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional for a subtle shadow */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .links-container {
@@ -50,37 +57,95 @@ nav {
   align-items: center;
 }
 
-nav a {
-  height: 100%;
-  padding: 0 10px;
-  max-height: 40px;
+nav a{
+  height: 40px;
+  padding: 0 5px;
+  margin: 0 10px;
   display: flex;
   align-items: center;
   text-decoration: none;
   color: var(--navbar-txt-color);
-  transition: border-width 0.3s, color 0.3s; /* Smooth transitions */
-  border: solid var(--navbar-border-color); /* Always have a border */
-  border-width: var(--navbar-link-width); /* Default thin border */
-  border-radius: var(--navbar-link-border-radius); /* Always rounded corners */
-  box-sizing: border-box; /* Ensures padding remains consistent */
-  margin-left: 5px;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 2px;
+  transition: 0.5s ease;
 }
 
-nav a:hover {
-  border-width: var(--navbar-link-hover-width); /* Thicker border on hover */
-  color: var(--navbar-hover-txt-color); /* Optional color change */
+nav a:hover{
+  border-style: solid;
   border-color: var(--navbar-border-color-hover);
+  color: var(--navbar-hover-txt-color);
 }
+
+
 
 nav .home-link {
   margin-right: auto;
-  border: none; /* Completely removes the border */
-  transition: none; /* No hover effect */
+  border: none;
 }
 
 nav .home-link:hover {
-  border: none; /* Ensures no border appears on hover */
-  color: var(--navbar-txt-color); /* Keeps the same text color */
+  margin-right: auto;
+  border: none;
 }
 
+nav svg{
+  fill: var(--navbar-txt-color);
+}
 
+#sidebar-active{
+  display: none;
+}
+
+.open-sidebar-button, .close-sidebar-button{
+  padding: 0 20px;
+  display: none;
+  cursor: pointer;
+}
+
+@media(max-width: 595px) {
+  nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .links-container{
+    flex-direction: column;
+    align-items: flex-start;
+
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 10;
+    width: 350px;
+
+    background-color: var(--sidebar-background-color);
+    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
+    transition: 0.75s ease;
+  }
+  
+  nav a{
+    box-sizing: border-box;
+    height: auto;
+    width: 100%;
+    padding: 20px 30px;
+    justify-content: flex-start;
+    border: none;
+  }
+  .open-sidebar-button, .close-sidebar-button{
+    display: block;
+  }
+
+  .close-sidebar-button {
+    margin-top: 40px;
+  }
+
+  #sidebar-active:checked ~ .links-container {
+    right: 0;
+  }
+  .homeiconlogo {
+    max-height: 50px;
+    transform: scale(3);
+    margin: 0;
+  }
+}
